@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 public class Turret {
     public DcMotor turretMotor = null;
-    static final double TICKS_PER_REV = 28 * 3.6 * 3.6; // Ví dụ cho REV HD Hex Motor 40:1
-    static final double GEAR_RATIO = 3.23529411765;    // Tỷ số truyền ngoài (nếu có)
+    static final double TICKS_PER_REV = 28 * 3.6 * 3.6; // REV HD Hex Motor 40:1 (3.6)
+    static final double GEAR_RATIO = 3.23529411765;    // Tỷ số truyền ngoài 
     static final double TICKS_PER_DEGREE = (TICKS_PER_REV * GEAR_RATIO) / 360.0;
 
     public double Kp = 0.08;  // Tăng lên nếu phản ứng chậm
@@ -42,7 +42,7 @@ public class Turret {
 
         double power = pPart + dPart + fPart;
 
-        // Dừng hẳn nếu sai số nhỏ hơn 0.5 độ để tránh motor kêu rè rè
+        // Chấp nhận sai số
         if (Math.abs(targetDegree - currentDegree) < 0.3) {
             power = 0;
         }
